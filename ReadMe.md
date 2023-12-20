@@ -65,7 +65,7 @@ This project serves as an exercise in applying object-oriented programming (OOP)
 import uuid 
 from datetime import datetime, timezone
 
-# creating the Expense class
+# Creating the Expense class, which represents an individual financial expense.
 class Expense:
     def __init__(self, title, amount):
         self.id = str(uuid.uuid4())
@@ -83,7 +83,8 @@ class Expense:
 
 
 
-```python     
+```python
+# Updates the title and/or amount of the expense.     
      def update(self, title = None, amount = None):
         if title is not None:
             self.title = title
@@ -100,6 +101,7 @@ class Expense:
   compatibility.
 
 ```python
+# Creating a dictionary representation of the Expense Class
    def to_dict(self):
         return {
         "id": self.id,
@@ -116,7 +118,7 @@ class Expense:
 * Initializes the object with an empty list (expenses) to store Expense objects.
   
 ```python
-# Creating Expense Database class        
+# Creating an Expense Database class for managing a collection of Expense objects.       
 class ExpenseDatabase:
     def __init__(self):
         self.expenses = []
@@ -126,7 +128,7 @@ class ExpenseDatabase:
 * Takes the provided expense object as an argument.
 
 ```python
-# Adding an Expense 
+# Adding a new expense to the ExpenseDatabase.
     def add_expense(self, expense):
         self.expenses.append(expense)
 ```
@@ -136,7 +138,7 @@ class ExpenseDatabase:
 * Effectively removes the Expense object with the matching ID from the database.
 
 ```python
-# Removing an expense from ExpenseDatabase    
+# Removing an expense from ExpenseDatabase by unique ID    
     def remove_expense(self, expense_id):
         self.expenses = [expense for expense in self.expenses if expense.id != expense_id]
 ```
@@ -146,12 +148,12 @@ class ExpenseDatabase:
 * If no match is found, returns None.
 
 ```python
-# Getting an expense by ID.    
+# Retriving an expense by its unique ID.   
     def get_expense_by_id(self, expense_id):
         for expense in self.expenses:
             if expense.id == expense_id:
                 return expense
-            return None
+        return None
 ```
   
 **get_expenses_by_title(title):**
@@ -160,7 +162,7 @@ class ExpenseDatabase:
 * Returns a list of Expense objects with the matching title.
 
 ```python
-# Get expenses by title (returning a list)
+# Retriving Expenses by title (returning a list).
     def get_expenses_by_title(self, title):
         return [expense for expense in self.expenses if expense.title == title]
 ```
@@ -171,7 +173,7 @@ class ExpenseDatabase:
 
 ```python
 # Creating a to_dict method that returns a list of dictionaries representing each expense in 
-# #the database
+# the database
     def to_dict(self):
         return [expense.to_dict() for expense in self.expenses]
 ```
