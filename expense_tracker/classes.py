@@ -38,29 +38,29 @@ class ExpenseDatabase:
         self.expenses = []
 
 # Adding an Expense 
-def add_expense(self, expense):
-    self.expenses.append(expense)
+    def add_expense(self, expense):
+        self.expenses.append(expense)
     
 
 # Removing an expense from ExpenseDatabase    
-def remove_expense(self, expense_id):
-    self.expenses = [expense for expense in self.expenses if expense.id != expense_id]
+    def remove_expense(self, expense_id):
+        self.expenses = [expense for expense in self.expenses if expense.id != expense_id]
     
 # Getting an expense by ID.    
 
-def get_expense_by_id(self, expense_id):
-    for expense in self.expenses:
-        if expense.id == expense_id:
-            return expense
-        return None
+    def get_expense_by_id(self, expense_id):
+        for expense in self.expenses:
+            if expense.id == expense_id:
+                return expense
+            return None
     
 # Get expenses by title (returning a list).
 
-def get_expenses_by_title(self, title):
-    return [expense for expense in self.expenses if expense.title == title]
+    def get_expenses_by_title(self, title):
+        return [expense for expense in self.expenses if expense.title == title]
 
 # Createing a to_dict method that returns a list of dictionaries representing each expense in 
 # #the database.
 
-def to_dict(self):
-    return [expense.to_dict() for expense in self.expenses]
+    def to_dict(self):
+        return [expense.to_dict() for expense in self.expenses]
