@@ -72,7 +72,7 @@ class Expense:
         self.title = title
         self.amount = amount
         self.created_at = datetime.utcnow()
-        self.updated_at = self.created_at
+        self.updated_at = self.created_at     
 ```
 
 **update(title=None, amount=None):**
@@ -84,13 +84,12 @@ class Expense:
 
 
 ```python     
-   def update(self, title = None, amount = None):
+     def update(self, title = None, amount = None):
         if title is not None:
             self.title = title
         if amount is not None:
             self.amount = amount
-        self.updated_at = datetime.utcnow()
-            
+        self.updated_at = datetime.utcnow()            
 ```
 
 
@@ -101,8 +100,7 @@ class Expense:
   compatibility.
 
 ```python
-  # Creating a dictionary representation of the Expense Class
-    def to_dict(self):
+   def to_dict(self):
         return {
         "id": self.id,
         "title": self.title,
@@ -110,7 +108,6 @@ class Expense:
         "created_at": self.created_at.isoformat(),
         "updated_at": self.updated_at.isoformat()
         }
-
 ```
 
 ## ExpenseDatabase Class:   
@@ -118,70 +115,66 @@ class Expense:
 **init():**
 * Initializes the object with an empty list (expenses) to store Expense objects.
   
-**Add_expense(expense):**
-* Adds a new Expense object to the expenses list.
-* Takes the provided expense object as an argument.
-  
-**Remove_expense(expense_id):**
-* Filters the expenses list, keeping only objects with IDs different from the provided expense_id.
-* Effectively removes the Expense object with the matching ID from the database.
-
-
 ```python
 # Creating Expense Database class        
 class ExpenseDatabase:
     def __init__(self):
         self.expenses = []
-
-# Adding an Expense 
-def add_expense(self, expense):
-    self.expenses.append(expense)
-
-# Removing an expense from ExpenseDatabase    
-def remove_expense(self, expense_id):
-    self.expenses = [expense for expense in self.expenses if expense.id != expense_id]
-
 ```
+**Add_expense(expense):**
+* Adds a new Expense object to the expenses list.
+* Takes the provided expense object as an argument.
 
+```python
+# Adding an Expense 
+    def add_expense(self, expense):
+        self.expenses.append(expense)
+```
+  
+**Remove_expense(expense_id):**
+* Filters the expenses list, keeping only objects with IDs different from the provided expense_id.
+* Effectively removes the Expense object with the matching ID from the database.
 
+```python
+# Removing an expense from ExpenseDatabase    
+    def remove_expense(self, expense_id):
+        self.expenses = [expense for expense in self.expenses if expense.id != expense_id]
+```
 
 **get_expense_by_id(expense_id):**
 * Iterates through the expenses list.Checks if any object's id matches the provided expense_id. If a match is found, returns the Expense object.
 * If no match is found, returns None.
+
+```python
+# Getting an expense by ID.    
+    def get_expense_by_id(self, expense_id):
+        for expense in self.expenses:
+            if expense.id == expense_id:
+                return expense
+            return None
+```
   
 **get_expenses_by_title(title):**
 * Uses list comprehension to filter the expenses list.
 * Keeps only objects where the title attribute matches the provided title argument.
 * Returns a list of Expense objects with the matching title.
 
+```python
+# Get expenses by title (returning a list)
+    def get_expenses_by_title(self, title):
+        return [expense for expense in self.expenses if expense.title == title]
+```
+
 **to_dict():**
 * Uses list comprehension to apply the to_dict() method to each Expense object in the expenses list.
 * Returns a list of dictionaries representing all Expense objects in the database.
 
-
-
 ```python
-# Getting an expense by ID.    
-
-def get_expense_by_id(self, expense_id):
-    for expense in self.expenses:
-        if expense.id == expense_id:
-            return expense
-        return None
-    
-# Get expenses by title (returning a list).
-
-def get_expenses_by_title(self, title):
-    return [expense for expense in self.expenses if expense.title == title]
-
-# Createing a to_dict method that returns a list of dictionaries representing each expense in 
-# #the database.
-
-def to_dict(self):
-    return [expense.to_dict() for expense in self.expenses]
+# Creating a to_dict method that returns a list of dictionaries representing each expense in 
+# #the database
+    def to_dict(self):
+        return [expense.to_dict() for expense in self.expenses]
 ```
-
-
 
 # Cloning the Repository:
  
