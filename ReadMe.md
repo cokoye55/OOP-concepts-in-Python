@@ -25,6 +25,11 @@ This project serves as an exercise in applying object-oriented programming (OOP)
 **created_at:** Timestamp indicating the expense creation date and time (UTC).
 
 **updated_at:** Timestamp indicating the last time the expense was updated (UTC).
+
+**Methods:**
+1. **```__init__```**: Initializes the attributes.
+2. **```update```**: Allows updating the title and/or amount, updating the updated_at timestamp.
+3. **```to_dict```**: Returns a dictionary representation of the expense.
  
 ## ```ExpenseDatabase Class:```  Manages a collection of Expense objects with six methods:
 
@@ -42,16 +47,14 @@ This project serves as an exercise in applying object-oriented programming (OOP)
 
 ## Implementation of each method and function within the classes
 
+
 ## Expense Class:
 
 **init(title, amount):**
 * Initializes the object with the provided title and amount.
-* Generates a unique identifier (id) using uuid.uuid4() and converts it to a string.
-* Sets both created_at and updated_at timestamps to the current UTC time with datetime.utcnow().
-
-**Unique IDs:**
-* The __init__ method of the Expense class uses uuid.uuid4() to generate unique identifiers for each expense.
-* This ensures there are no duplicate IDs, even if multiple expenses are created simultaneously.
+* Generates a unique identifier (id) using uuid.uuid4() and converts it to a string. This ensures there are no duplicate IDs, even if multiple expenses are  
+  created simultaneously.
+* Sets both created_at and updated_at timestamps to the current UTC time with datetime.utcnow(). 
   
 **Timestamps:**
 * Both created_at and updated_at in the Expense class utilize datetime.utcnow() to capture timestamps accurately.
